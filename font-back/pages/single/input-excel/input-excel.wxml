@@ -1,0 +1,89 @@
+<view class="container1">
+  <view class="public">
+    <view class="text-public">
+      <view class="title" style="font-size:50rpx">单课程-Excel输入</view>
+      <view class="title-text" style="margin-top:30rpx">设置课程时长以及采样间隔</view>
+      <view class="title-text">点击生成结果图</view>
+      <view class="title-text">点击下载结果图</view>
+      
+    </view>
+    
+  </view>
+  <view class="button-text">
+      <view class="input-item">
+        <text>课程时长(min)</text>
+        <input value='{{duration}}' bindinput="durchange" class="inputtext" type="number"/>
+    </view>
+    <view class="input-item">
+      <text>采样间隔(s)</text>
+        <picker value="{{space_array[index].id}}" range="{{space_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_space" class="picked">
+          <view class="inputtext">{{space}}</view>
+          <!-- <input value='{{space}}' bindinput="spachange" class="inputtext"  type="number"/> -->
+      </picker>
+     
+    </view>
+
+    <view class="input-item">
+        <text>坐标单位</text>
+        <input value='{{lenght_aix}}' bindinput="lenght_aixchange" class="inputtext"  type="number"/>
+    </view>
+      
+    </view>
+    <block  wx:if="{{showed}}">
+      <view class="file-view" >
+      <view class="upload-view" bindtap="uploadFile" wx:if="{{file_show}}"><image style="width:80%;height:80%;margin:0 auto;" src="https://s3.ax1x.com/2020/11/22/DGAbRJ.png"/>
+      <view style="margin:0 auto;width:80%;height:20%;text-align:center;">上传文件</view>
+      </view>
+      <view class="excel-view" wx:else>
+        <view class="excel-img">
+          <image style="width:80%;height:100%;margin:0 auto;" src="https://s3.ax1x.com/2020/11/22/DGQTne.png"/>
+        </view>
+        <view class="excel-name-time">
+          <view>{{file.name}}</view>
+        </view>
+        <view class="excel-more" >
+          <image bindtap="openActionsheet" style="width:50%;height:70%;margin:0 auto;margin-top:10rpx" src="https://s3.ax1x.com/2020/11/22/DGlKHJ.png"/>
+        </view>
+      </view>
+    </view>
+  </block>
+    <block wx:if="{{!file_show}}">
+      <view class="d-a-item">
+          <label class="legend">课例名称</label>
+        <input  class="d-a-input" placeholder="课例名称" value="{{legend}}" bindinput="legend_change"/>
+      </view>
+      <view class="grid-section">
+        <view class="grid-section-title">图表网格</view>
+        <radio-group bindchange="radioChange">
+        <label class="radio" wx:for="{{grid_item}}">
+          {{item.name}}<radio value="{{item.value}}" checked="{{item.checked}}"/>
+        </label>
+      </radio-group>
+      </view>
+    
+    <view class="d-a-button">
+
+        <button data-idx="1" class="btn1" bindtap="makePhoto" size="mini" style="background-color:#000">S-T图</button>
+        <button data-idx="2" class="btn1" bindtap="makePhoto" size="mini" style="background-color:#000">Rt-Ch图</button>
+        <button  bindtap="resetList" size="mini" >恢复默认</button>
+      </view>
+    </block>
+      <view class="footer"></view>
+      <block wx:if="{{answerImg}}">
+      <view class='topic_answerImg' >
+        <image bindtap='topic_preview'  data-url='{{answerImg}}' class='topic_answer_itemImg' src='{{answerImg}}'></image>
+      </view>
+      <view class="rt-ch-view">
+        <view class="rt-ch-item" wx:for="{{Rt}}" wx:for-index="idx" wx:for-item="rt">
+          <view class="item-rch"><label>课例</label><label>：</label><text>{{legend}}</text></view>
+          <view class="item-rch"><label>Rt</label><label>=</label><text>{{rt}}</text></view>
+          <view class="item-rch"><label>Ch</label><label>=</label><text>{{Ch[idx]}}</text></view>
+          <view class="item-rch"><label>教学模式</label><label>：</label><text>{{Teach_Model[idx]}}</text></view>
+        </view>
+      </view>
+      <view class="download">
+        <button class="btn1" bindtap="downloadImg" size="mini" style="background-color:#000">保存图像</button>
+      </view>
+    </block>
+      <view class="footer"></view>
+</view>

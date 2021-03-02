@@ -1,0 +1,17 @@
+<!-- <web-view src="{{url_test}}" binderror="errBind">
+</web-view> -->
+<view class="container1">
+  <view class="public">
+    <view class="text-public">
+      <view class="title" style="font-size:50rpx">使用教程</view>
+      <view class="title-text" style="margin-top:30rpx">教师行为：s-t图中横线部分</view>
+      <view class="title-text">学生行为：s-t图中竖线部分</view>
+      <view class="title-text">互动行为：s-t图中斜线部分</view>
+    </view>
+  </view>
+    <view class="flex-item">
+      <button data-index="2" bindtap="bindViewChange" class="button">教师行为</button>
+      <button data-index="1" bindtap="bindViewChange" class="button">学生行为</button>
+      <button data-index="3" bindtap="bindViewChange" class="button">互动行为</button>
+    </view>
+</view>

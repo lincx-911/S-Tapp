@@ -1,0 +1,37 @@
+.container1{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.text-public{
+  margin: 0 auto;
+  margin-top: 60rpx;
+  color: white;
+  text-align: center;
+}
+.public{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 350rpx;
+  width: 100%;
+  background:rgb(37, 35, 33);
+}
+.flex-item {
+  margin-top: 50rpx;
+  display: flex;
+  width:100%;
+  height:50%;
+  flex-direction: column;
+  justify-content: left;
+}
+.button{
+  font-size: 40rpx;
+  height: 15%;
+  width: 100%;
+  margin: auto;
+  margin-top: 20rpx;
+  border-radius: 15rpx;
+  background-color: rgb(41, 39, 38);
+  color: white;
+}

@@ -1,0 +1,22 @@
+
+<!--index.wxml-->
+<view class="container1">
+  <view class="public">
+    <view class="text-public">
+      <view class="title" style="font-size:40rpx">输入方式</view>
+      <view class="title-text" style="margin-top:30rpx">直接输入：直接输入行为代码</view>
+      <view class="title-text">excel输入：excel导入行为代码</view>
+    </view>
+    
+  </view>
+
+    <view class="flex-item">
+      <view class="button-text">
+      <view class="text">请选择输入方式</view>
+    </view>
+    <view class="button">
+      <button class="btn1" size="mini" bindtap="bindViewTap">直接输入</button>
+      <button class="btn1" size="mini" bindtap="bindExcel">excel输入</button>
+    </view>
+    </view>
+</view>

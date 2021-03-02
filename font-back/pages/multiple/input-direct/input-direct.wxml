@@ -1,0 +1,134 @@
+<!--pages/input-direct/input-direct.wxml-->
+
+<!--index.wxml-->
+<view class="container1">
+  <view class="public">
+    <view class="text-public">
+      <view class="title" style="font-size:50rpx">多课程-直接输入</view>
+      <view class="title-text" style="margin-top:30rpx">设置课程时长以及采样间隔</view>
+      <view class="title-text">点击生成结果图</view>
+      <view class="title-text">点击下载结果图</view>
+      
+    </view>
+    
+  </view>
+    <view class="button-text">
+      <view class="input-item">
+        <text>课程数量</text>
+        <picker value="{{class_array[index].id}}" range="{{class_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_class" class="picked">
+          <view class="inputtext">{{class_num}}</view>
+        <!-- <input value='{{class_num}}' bindinput="classchange" class="inputtext" type="number"/> -->
+      </picker>
+    </view>
+    <view class="input-item">
+      <text>采样间隔(s)</text>
+        <picker value="{{space_array[index].id}}" range="{{space_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_space" class="picked">
+          <view class="inputtext">{{space}}</view>
+          <!-- <input value='{{space}}' bindinput="spachange" class="inputtext"  type="number"/> -->
+      </picker>
+     
+    </view>
+
+    <view class="input-item">
+        <text>坐标单位</text>
+        <input value='{{lenght_aix}}' bindinput="lenght_aixchange" class="inputtext"  type="number"/>
+    </view>
+      
+    </view>
+    <block wx:for="{{class_info}}" wx:for-key ="index" wx:for-item="item">
+    <view class="data-action">
+      <view class="d-a-title">
+        <view class="d-a-item">
+          <label class="legend">课例名称</label>
+        <input  class="d-a-input" data-index="{{index}}" placeholder="课例名称" value="{{item.legend}}" bindinput=legend_change"/>
+      </view>
+      <view class="d-a-item">
+          <label class="legend">课程时长</label>
+        <input class="d-a-input" data-index="{{index}}" placeholder="课程时长(min)" value="{{item.duration}}" bindinput="duration_change" type="number"/>
+      </view>
+      <picker data-index="{{index}}"  range="{{d_a_types}}" range-key="{{'name'}}" bindchange="bindPickerChange_type" class="picked">
+          <view class="d-a-item">
+            <label class="legend">线条类型</label>
+            <view class="d-a-input">{{item.typename}}</view>
+          <!-- <input data-index="{{index}}" class="d-a-input" placeholder="线条类型" value="{{item.typename}}" bindinput="type_change"/> -->
+          </view>
+        </picker>
+      
+      
+
+      </view>
+      <block wx:if="{{item.show}}">
+      <view class="d-a-main">
+        <view class="d-a-list" style="font-size:40rpx;margin-top:20rpx">
+          <view class="d-a-left">
+            课程时刻
+          </view>
+          <view class="d-a-right">
+            行为代码
+          </view>
+        </view>
+        <view class="d-a-list" wx:for="{{item.data_test}}" wx:for-index="req_index" wx:for-item="req_item" style="margin-top:20rpx;margin-buttom:10rpx">
+          <view class="d-a-left" >
+            {{item.arr_time[req_index]}}
+          </view>
+
+          <view class="d-a-right">
+            <picker data-index="{{req_index}}" data-cindex="{{index}}" name="picker_hx" class="cybm_pic_1" value="{{pic_array[1].id}}" range="{{pic_array}}" range-key="{{'name'}}"  bindchange="bindPickerChange_hx">
+        <view class="picker" >
+          
+         <view class="pickinput" >
+          <!-- <input  value="{{item.req[req_index]}}"/> -->
+          <view>{{item.req[req_index]}}</view>
+          </view>
+        </view>
+  </picker>
+            <!-- <input value='{{item}}' bindinput="spachange"  type="digit"/> -->
+          </view>
+          
+        </view>
+      </view>
+    </block>
+      <view class="d-a-foot" data-idx="{{index}}" bindtap="changeUp">
+        <view class="foot-img" wx:if="{{item.up}}">
+        <image style="width:100%;height:100%;" src="https://s3.ax1x.com/2020/11/16/DkWe9P.png"></image>
+      </view>
+      <view class="foot-img" wx:else>
+        <image style="width:100%;height:100%;" src="https://s3.ax1x.com/2020/11/16/DkRRTs.png"></image>
+      </view>
+      </view>
+    </view>
+  </block>
+    <block wx:if="{{showed}}">
+    <view class="grid-section">
+        <view class="grid-section-title">图表网格</view>
+        <radio-group bindchange="radioChange">
+        <label class="radio" wx:for="{{grid_item}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+        </label>
+      </radio-group>
+      </view>
+    <view class="d-a-button"> 
+        <button data-idx="1" class="btn1" bindtap="makePhoto" size="mini" style="background-color:#000">S-T图像</button>
+        <button data-idx="2" class="btn1" bindtap="makePhoto" size="mini" style="background-color:#000">Rt-Ch图像</button>
+        <button  bindtap="resetList" size="mini" >恢复默认</button>
+      </view>
+    </block>
+      <view class="footer"></view>
+      <block wx:if="{{answerImg}}">
+      <view class='topic_answerImg' >
+        <image bindtap='topic_preview'  data-url='{{answerImg}}' class='topic_answer_itemImg' src='{{answerImg}}'></image>
+      </view>
+      <view class="rt-ch-view">
+        <view class="rt-ch-item" wx:for="{{Rt}}" wx:for-index="idx" wx:for-item="rt">
+          <view class="item-rch"><label>课例</label><label>：</label><text>{{Teach_Model[idx].legend}}</text></view>
+          <view class="item-rch"><label>Rt</label><label>=</label><text>{{rt}}</text></view>
+          <view class="item-rch"><label>Ch</label><label>=</label><text>{{Ch[idx]}}</text></view>
+          <view class="item-rch"><label>教学模式</label><label>：</label><text>{{Teach_Model[idx].model}}</text></view>
+        </view>
+      </view>
+      <view class="download">
+        <button class="btn1" bindtap="downloadImg" size="mini" style="background-color:#000">保存图像</button>
+      </view>
+    </block>
+      <view class="footer"></view>
+</view>

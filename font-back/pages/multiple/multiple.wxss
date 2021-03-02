@@ -1,0 +1,50 @@
+/**index.wxss**/
+.container1{
+  display: flex;
+  flex-direction: column;
+  height: 600rpx;
+}
+.text-public{
+  margin: 0 auto;
+  margin-top: 60rpx;
+  color: white;
+  text-align: center;
+}
+.public{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 300rpx;
+  width: 100%;
+  background:rgb(37, 35, 33);
+}
+.flex-item {
+  margin-top: 50rpx;
+  display: flex;
+  width:100%;
+  height:200rpx;
+  flex-direction: column;
+  justify-content: left;
+}
+.text{
+  font-size: 45rpx;
+  color: rgb(53, 49, 47);
+  margin:0 auto;
+}
+.btn1 {
+  width: 40%;
+  
+  background-color: rgb(41, 39, 38);
+  color: white;
+}
+.button-text{
+  text-align: center;
+  margin: auto;
+  height: 60%;
+}
+.button{
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+
+}

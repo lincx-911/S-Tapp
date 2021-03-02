@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container1">
+  <view class="public">
+    <view class="text-public">
+      <view class="title" style="font-size:50rpx">S-T Diagram</view>
+      <view class="title-text" style="margin-top:30rpx">为教育者提供课堂分析服务</view>
+    </view>
+    
+  </view>
+  <view class="flex-item">
+    <view class="flex-item-type">
+      <view class="button-text">
+      <view class="text">请选择分析方式</view>
+    </view>
+    <view class="button">
+      <button class="btn1" size="mini" bindtap="bindViewTap">单课程</button>
+      <button class="btn1" size="mini" bindtap="bindChangeView">多课程</button>
+    </view>
+    </view>
+    <view class="flex-item-type">
+    <view class="button-text">
+      <view class="text">对图分析导航</view>
+    </view>
+    <view class="button">
+      <button class="btn1" size="mini" bindtap="bindViewtur">使用教程</button>
+    </view>
+  </view>
+</view>
+</view>

@@ -1,0 +1,28 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/single/single",
+    "pages/multiple/multiple",
+    "pages/tutorial/tutorial",
+    "pages/single/input-direct/input-direct",
+    "pages/single/input-excel/input-excel",
+    "pages/multiple/input-direct/input-direct",
+    "pages/multiple/input-excel/input-excel",
+    "pages/tutorial/multipletutorial/multipletutorial"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "改进型S-T教学分析法绘图工具",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 200000,
+    "uploadFile": 200000,
+    "downloadFile": 200000
+  }
+}
